@@ -1,15 +1,13 @@
 import { Images } from "../Images";
 import Input from "../Input";
 import UserService from "../../services/users"
-import { useContext, useEffect, useState } from "react";
-import { User } from "../../utils/context";
+import { useEffect, useState } from "react";
 
 function Header() {
 
     const [name, setName] = useState("")
     const [value, setValue] = useState("")
 
-    const { setUserData, userData } = useContext(User)
 
 
     const getCurrentUser = async (name) => {
