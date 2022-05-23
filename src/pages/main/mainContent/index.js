@@ -61,7 +61,7 @@ function PaginatedItems({ itemsPerPage }) {
     return (
         <div className="w-full pl-[85px] tablet:pl-0">
             <h1 className="leading-[42px] text-[32px] font-semibold mb-[29px] tablet:mt-[15px] phone:text-[24px]">{`Repositories (${repos && repos.length})`}</h1>
-              <PaginatedItems itemsPerPage={4} />,
+              <PaginatedItems itemsPerPage={4} />
         </div>
     )
 }
