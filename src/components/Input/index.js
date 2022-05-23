@@ -1,11 +1,10 @@
 import { Images } from "../Images";
 
 
-function Input({ onChangeFn, username, setValue }) {
-
+function Input({ onChangeFn, username, setValue ,getCurrentUser }) {
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            setValue(username)
+            getCurrentUser(username)
         }
     }
 
