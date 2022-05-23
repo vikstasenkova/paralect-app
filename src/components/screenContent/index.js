@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 function ScreenContent({ ImageType, text, textStyle }) {
     return (
-        <div className="w-full h-[calc(100%-72px)] flex  justify-center items-center overflow-hidden">
+        <div className="w-full h-[calc(100vh-72px)] flex  justify-center items-center overflow-hidden">
             <div className="flex flex-col items-center gap-[24px]">
                 <div className="flex w-[110px] h-[110px] items-center justify-center">
                     <Images type={ImageType} />
