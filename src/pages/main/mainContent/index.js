@@ -1,13 +1,67 @@
-function MainContent() {
+import React, { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+
+
+function MainContent({repos}) {
+    const items = repos 
+
+function Items({ currentItems }) {
+  return (
+    <>
+      {currentItems &&
+        currentItems.map((item) => (
+            <div key={item.id} className=" flex flex-col gap-[16px] bg-white h-[112px] w-full px-[32px] my-[24px] py-[24px] rounded-[6px] tablet:min-h-[112px] tablet:h-full phone:gap-[6px]" >
+            <a href={item?.html_url}  target="_blank" rel="noreferrer" className="leading-[29px] text-[24px] font-medium text-blue phone:text-[18px]">{item?.name}</a>
+            <p className="leading-[19px] text-[16px] phone:text-[12px]">{item?.description}</p> 
+        </  div>
+        ))}
+    </>
+  );
+}
+
+function PaginatedItems({ itemsPerPage }) {
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage]);
+
+  
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+  };
+
+  return (
+    <>
+      <Items currentItems={currentItems} />
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        containerClassName="flex flex-row justify-end h-[25px] gap-[8px] text-grey-1"
+        pageClassName="flex w-[21px] justify-center"
+        activeClassName="bg-blue rounded-[3px] text-white"
+        disabledClassName="text-[#808080]"
+        previousClassName="text-blue pr-[10px]"
+        nextClassName="text-blue pl-[10px]"
+      />
+    </>
+  );
+}
+
     return (
-        <div className="w-full pl-[85px]">
-            <h1 className="leading-[42px] text-[32px] font-semibold mb-[29px]">Repositories (249)</h1>
-            <div className="flex flex-col gap-[24px] h-full w-full">
-                <div className=" flex flex-col gap-[16px] bg-white h-[112px] w-full px-[32px] py-[24px]" >
-                    <p className="leading-[29px] text-[24px] font-medium text-blue">react-hot-loader</p>
-                    <p className="leading-[19px] text-[16px]">Tweak React components in real time. (Deprecated: use Fast Refresh instead.</p>
-                </div>
-            </div>
+        <div className="w-full pl-[85px] tablet:pl-0">
+            <h1 className="leading-[42px] text-[32px] font-semibold mb-[29px] tablet:mt-[15px] phone:text-[24px]">{`Repositories (${repos && repos.length})`}</h1>
+              <PaginatedItems itemsPerPage={4} />,
         </div>
     )
 }

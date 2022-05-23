@@ -10,7 +10,8 @@ module.exports = {
       'grey-1': "#808080"
     },
     screens: {
-      phone: { max: '568px' }
+      phone: {max: '568px'},
+      tablet: {max: '768px'}
     }
 
   },

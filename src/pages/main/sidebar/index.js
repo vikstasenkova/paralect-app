@@ -1,18 +1,15 @@
-import Image from "./image.png";
 import InfoGroup from "./infogroup";
 
-function SideBar() {
-
-
+function SideBar({userData}) {
     return (
         <div>
             <div className="flex flex-col">
-                <img src={Image} alt="img" className="w-[280px] rounded-full mb-[29px]"></img>
-                <p className="leading-[34px] text-[24px] font-semibold mb-[12px]">Dan Abramov</p>
-                <p className="leading-[28.74px] text-[18px] text-blue mb-[25px]">gaearon</p>
+                <img src={`${userData.avatar_url}`} alt="img" className="w-[280px] rounded-full mb-[29px]"></img>
+                <p className="leading-[34px] text-[24px] font-semibold mb-[12px]">{userData.name}</p>
+                <a href={userData?.html_url}  rel="noreferrer" target="_blank" className="leading-[28.74px] text-[18px] text-blue mb-[25px]">{userData.login}</a>
                 <div className="flex flex-row gap-[20px]">
-                    <InfoGroup ImageType={'followers-logo'} text={'65.8k followers'} />
-                    <InfoGroup ImageType={'following-logo'} text={'171 following'} />
+                    <InfoGroup ImageType={'followers-logo'} text={`${userData?.followers} followers`} />
+                    <InfoGroup ImageType={'following-logo'} text={`${userData?.following} following`} />
                 </div>
             </div>
         </div>
