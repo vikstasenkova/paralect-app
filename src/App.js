@@ -20,7 +20,7 @@ function App() {
   }
   return (
 
-    <div className='w-screen h-screen bg-bg-grey'>
+    <div className='w-screen min-h-screen bg-bg-grey'>
       <Header />
       <Routes>
         <Route path="/" element={<InitialScreen />} />

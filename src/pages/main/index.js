@@ -31,7 +31,7 @@ function MainScreen() {
         getCurrentUserRepos(userData?.login)
     },[userData])
     return (
-        <div className="flex flex-row h-[calc(100%-72px)] px-[57px] py-[28px]">
+        <div className="flex flex-row h-[calc(100%-72px)] px-[57px] py-[28px] tablet:flex-col">
             <div>
                 <SideBar userData={userData} />
             </div>

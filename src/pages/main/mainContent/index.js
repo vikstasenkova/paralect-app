@@ -10,9 +10,9 @@ function Items({ currentItems }) {
     <>
       {currentItems &&
         currentItems.map((item) => (
-            <div key={item.id} className=" flex flex-col gap-[16px] bg-white h-[112px] w-full px-[32px] my-[24px] py-[24px] rounded-[6px]" >
-            <a href={item?.html_url}  target="_blank" rel="noreferrer" className="leading-[29px] text-[24px] font-medium text-blue">{item?.name}</a>
-            <p className="leading-[19px] text-[16px]">{item?.description}</p> 
+            <div key={item.id} className=" flex flex-col gap-[16px] bg-white h-[112px] w-full px-[32px] my-[24px] py-[24px] rounded-[6px] tablet:min-h-[112px] tablet:h-full phone:gap-[6px]" >
+            <a href={item?.html_url}  target="_blank" rel="noreferrer" className="leading-[29px] text-[24px] font-medium text-blue phone:text-[18px]">{item?.name}</a>
+            <p className="leading-[19px] text-[16px] phone:text-[12px]">{item?.description}</p> 
         </  div>
         ))}
     </>
@@ -59,8 +59,8 @@ function PaginatedItems({ itemsPerPage }) {
 }
 
     return (
-        <div className="w-full pl-[85px]">
-            <h1 className="leading-[42px] text-[32px] font-semibold mb-[29px]">{`Repositories (${repos && repos.length})`}</h1>
+        <div className="w-full pl-[85px] tablet:pl-0">
+            <h1 className="leading-[42px] text-[32px] font-semibold mb-[29px] tablet:mt-[15px] phone:text-[24px]">{`Repositories (${repos && repos.length})`}</h1>
               <PaginatedItems itemsPerPage={4} />,
         </div>
     )
